@@ -7,16 +7,17 @@ import org.hibernate.annotations.Entity;
 
 import com.sun.istack.NotNull;
 
+
 @Entity 
 
 public class Produit {
 	@Id @GeneratedValue 
  private Long id;
-	
+
  private String designation;
  private Double Prix;
  @NotNull
- private int qantite;
+ private int quantite;
  
 	public Long getId() {
 		return id;
@@ -37,16 +38,16 @@ public class Produit {
 		Prix = prix;
 	}
 	public int getQantite() {
-		return qantite;
+		return quantite;
 	}
 	public void setQantite(int qantite) {
-		this.qantite = qantite;
+		this.quantite = qantite;
 	}
 	public Produit(String designation, Double prix, int qantite) {
 		super();
 		this.designation = designation;
 		Prix = prix;
-		this.qantite = qantite;
+		this.quantite = qantite;
 	}
 	public Produit() {
 		super();
