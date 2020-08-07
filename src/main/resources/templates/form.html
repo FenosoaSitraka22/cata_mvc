@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="htto://www.hymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout">
+<head>
+	<meta charset="UTF-8" />
+	<span th:if="${id!=null}"><title>Edit product</title></span>
+	<span th:if="${id==null}"><title>New product</title></span>
+	
+	<link rel="stylesheet"
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+		integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+		crossorigin="anonymous" />
+	<link rel="stylesheet" type="text/css" href="../static/css/Style.css"
+		th:href="@{css/Style.css}" />
+</head>
+<body>
+	<div layout:fragment="content">
+		<div class="spacer col-md-6 col-xs-12 ">
+			<div class="panel-default">
+				<span th:if="${id!=null}">
+					<div class="panel-heading">Edit product</div>
+				 </span> 
+				 <span th:if="${id==null}">
+					<div class="panel-heading">Create a new product</div>
+				</span>
+				<p></p>
+				<div class="panel-body">
+					<form th:action="@{save}" method="post">
+						<span th:if="${id!=null}">
+							<div class="form-group">
+								<label class="control-label">ID</label> <input
+									class="form-control" name="id" th:value="${produit.id}"
+									readonly></input>
+							</div>
+						</span>
+						<div class="form-group">
+							<label class="control-label">Désignation</label> <input
+								class="form-control" type="text" name="designation"
+								th:value="${produit.designation}" /> <span class="red"
+								th:errors="${produit.designation}"></span>
+						</div>
+						<div class="form-group">
+							<label class="control-label">Prix</label> <input
+								class="form-control" type="text" name="prix"
+								th:value="${produit.prix}" /> <span class="red"
+								th:errors="${produit.prix}"></span>
+						</div>
+						<div class="form-group">
+							<label class="control-label">Quantité</label> <input
+								class="form-control" type="text" name="quantite"
+								th:value="${produit.quantite}" /> <span class="red"
+								th:errors="${produit.quantite}"></span>
+						</div>
+						<button type="submit" class="btn btn-primary">Save</button>
+					</form>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</body>
+</html>
